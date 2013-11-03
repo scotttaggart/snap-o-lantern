@@ -183,6 +183,9 @@ ISR(TIMER1_COMPB_vect)
     PulseDone = 1;
 }
 
+//
+// states the state machines runs through
+//
 typedef enum
 {
     STATE_WAITING_OPEN,
