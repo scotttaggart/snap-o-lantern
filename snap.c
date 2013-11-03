@@ -197,7 +197,7 @@ typedef enum
     STATE_FINAL_CLOSE,
 } STATE;
 
-unsigned int servo_position[NUM_SERVOS];        // Normals values should range 200+- thru 1000+-. 
+unsigned int servo_position[NUM_SERVOS];        // Normal values should range 200+- thru 1000+-. 
 // these are the max postions for each servo line -- set them to any values you like
 // they do not have to be in pin-order...  They can even be the same, if needed
 // The SERVO_BASE_VALUE_US value is added to each one.
@@ -346,16 +346,16 @@ int main (void)
                 break;
             }
             CloseMouth();
-            ++State;
             MounthOpeningTick = 0;
+            ++State;
             // fall-through OK
         case STATE_WAITING_TO_BOUNCE_FIRST:
             if( ++MounthOpeningTick < TICKS_BOUNCE_MOUTH_CLOSED )
             {
                 break;
             }
-            ++State;
             MounthOpeningTick = 0;
+            ++State;
             // fall-through OK
         case STATE_BOUNCING_FIRST:
             if( MounthOpeningTick < TICKS_TO_BOUNCE_MOUTH )
@@ -373,8 +373,8 @@ int main (void)
             {
                 break;
             }
-            ++State;
             MounthOpeningTick = 0;
+            ++State;
             // fall-through OK
         case STATE_BOUNCING_SECOND:
             if( MounthOpeningTick < TICKS_TO_BOUNCE_MOUTH )
@@ -390,8 +390,8 @@ int main (void)
         // we need to wait for mouth to shut before sleeping
         case STATE_FINAL_CLOSE:
             Sleeping = TRUE;
-            State = STATE_WAITING_OPEN;
             CurTicks = 0;
+            State = STATE_WAITING_OPEN;
         }
 
     } // End main loop
